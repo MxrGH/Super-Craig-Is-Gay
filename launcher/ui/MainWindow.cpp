@@ -153,17 +153,33 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
     setMinimumSize(900, 620);
     resize(1120, 760);
 
-    const QString toolbarStyle = QStringLiteral(
-        "QToolBar { spacing: 6px; padding: 6px; }"
-        "QToolButton { padding: 6px 10px; border-radius: 6px; }"
+    // Rounded controls throughout the launcher, while keeping the active theme's palette.
+    setStyleSheet(QStringLiteral(
+        "QToolBar { spacing: 8px; padding: 7px; border: 0; }"
+        "QToolButton { padding: 7px 11px; border: 1px solid transparent; border-radius: 10px; }"
         "QToolButton:hover { background-color: palette(midlight); }"
-        "QToolButton:pressed { background-color: palette(mid); }");
+        "QToolButton:pressed { background-color: palette(mid); }"
+        "QPushButton { padding: 7px 14px; border: 1px solid palette(mid); border-radius: 9px; }"
+        "QPushButton:hover { background-color: palette(midlight); }"
+        "QPushButton:pressed { background-color: palette(mid); }"
+        "QLineEdit, QPlainTextEdit, QTextEdit, QComboBox, QSpinBox, QDoubleSpinBox, "
+        "QDateEdit, QTimeEdit { padding: 6px 9px; border: 1px solid palette(mid); border-radius: 9px; }"
+        "QComboBox::drop-down { border: 0; border-top-right-radius: 9px; border-bottom-right-radius: 9px; }"
+        "QTabWidget::pane { border: 1px solid palette(mid); border-radius: 10px; padding: 4px; }"
+        "QTabBar::tab { padding: 7px 14px; margin: 2px; border: 1px solid transparent; border-radius: 8px; }"
+        "QTabBar::tab:selected { background-color: palette(midlight); border-color: palette(mid); }"
+        "QMenu { padding: 5px; border: 1px solid palette(mid); border-radius: 10px; }"
+        "QMenu::item { padding: 6px 28px 6px 10px; border-radius: 6px; }"
+        "QMenu::item:selected { background-color: palette(midlight); }"
+        "QAbstractItemView { border: 1px solid palette(mid); border-radius: 10px; padding: 4px; }"
+        "QScrollBar:vertical { width: 12px; margin: 3px; border: 0; border-radius: 6px; }"
+        "QScrollBar:horizontal { height: 12px; margin: 3px; border: 0; border-radius: 6px; }"
+        "QScrollBar::handle:vertical, QScrollBar::handle:horizontal { min-width: 24px; min-height: 24px; "
+        "border-radius: 6px; background-color: palette(mid); }"
+        "QScrollBar::add-line, QScrollBar::sub-line { width: 0; height: 0; border: 0; }"));
     ui->mainToolBar->setIconSize(QSize(20, 20));
     ui->instanceToolBar->setIconSize(QSize(20, 20));
     ui->newsToolBar->setIconSize(QSize(18, 18));
-    ui->mainToolBar->setStyleSheet(toolbarStyle);
-    ui->instanceToolBar->setStyleSheet(toolbarStyle);
-    ui->newsToolBar->setStyleSheet(toolbarStyle);
 
     setWindowIcon(APPLICATION->logo());
     setWindowTitle(APPLICATION->applicationDisplayName());
