@@ -80,7 +80,7 @@ endif()
 configure_file(win_install.nsi.in win_install.nsi @ONLY)
 
 if(SCDOC_FOUND)
-    configure_file(${Launcher_APP_BINARY_NAME}.6.scd.in ${Launcher_APP_BINARY_NAME}.6.scd @ONLY)
+    configure_file(prismlauncher.6.scd.in ${Launcher_APP_BINARY_NAME}.6.scd @ONLY)
 
     set(in_scd "${CMAKE_CURRENT_BINARY_DIR}/${Launcher_APP_BINARY_NAME}.6.scd")
     set(out_man "${CMAKE_CURRENT_BINARY_DIR}/${Launcher_APP_BINARY_NAME}.6")
