@@ -50,7 +50,6 @@
 #include "minecraft/auth/MinecraftAccount.h"
 
 class LaunchController;
-class NewsChecker;
 class QToolButton;
 class InstanceProxyModel;
 class LabeledToolButton;
