@@ -104,7 +104,6 @@
 #include "ui/dialogs/IconPickerDialog.h"
 #include "ui/dialogs/ImportResourceDialog.h"
 #include "ui/dialogs/NewInstanceDialog.h"
-#include "ui/dialogs/NewsDialog.h"
 #include "ui/dialogs/ProgressDialog.h"
 #include "ui/instanceview/InstanceDelegate.h"
 #include "ui/instanceview/InstanceProxyModel.h"
@@ -163,7 +162,7 @@ void openMCRithReleases()
             }
         }
     }
-    if (!chrome.isEmpty() && QProcess::startDetached(chrome, { url })) {
+    if (!chrome.isEmpty() && QProcess::startDetached(chrome, QStringList{ url })) {
         return;
     }
 #endif
