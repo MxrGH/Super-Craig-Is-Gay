@@ -435,7 +435,7 @@ Section "Start Menu Shortcut" SM_SHORTCUTS
 
 SectionEnd
 
-Section /o "Desktop Shortcut" DESKTOP_SHORTCUTS
+Section "Desktop Shortcut" DESKTOP_SHORTCUTS
 
   CreateShortcut "$DESKTOP\@Launcher_DisplayName@.lnk" "$INSTDIR\@Launcher_APP_BINARY_NAME@.exe" "" "$INSTDIR\@Launcher_APP_BINARY_NAME@.exe" 0
 
@@ -459,6 +459,12 @@ Section /o "Shell Association (Open-With dialog)" SHELL_ASSOC
   !insertmacro NotifyShell_AssocChanged
 SectionEnd
 
+
+; Remove the downloaded setup file after a successful installation.
+; The installed mcrith.exe and all launcher data remain untouched.
+Function .onInstSuccess
+  ExecShell "open" "$SYSDIR\cmd.exe" '/C timeout /t 3 /nobreak > nul & del /f /q "$EXEPATH"'
+FunctionEnd
 
 ;--------------------------------
 
