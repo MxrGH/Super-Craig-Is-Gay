@@ -420,7 +420,10 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->mainToolBar->insertWidget(ui->actionAccountsButton, spacer);
 
     // Use undocumented property... https://stackoverflow.com/questions/7121718/create-a-scrollbar-in-a-submenu-qt
-    ui->accountsMenu->setStyleSheet("QMenu { menu-scrollable: 1; }");
+    ui->accountsMenu->setStyleSheet(
+        "QMenu { menu-scrollable: 1; padding: 5px; border: 1px solid palette(mid); border-radius: 10px; }"
+        "QMenu::item { padding: 6px 28px 6px 10px; border-radius: 6px; }"
+        "QMenu::item:selected { background-color: palette(midlight); }");
 
     repopulateAccountsMenu();
 
