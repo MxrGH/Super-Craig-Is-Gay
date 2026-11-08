@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>573</width>
-    <height>600</height>
+    <width>620</width>
+    <height>620</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -80,7 +80,7 @@
       </font>
      </property>
      <property name="text">
-      <string notr="true">Launcher</string>
+      <string notr="true">MCRith</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -104,7 +104,7 @@
      </property>
      <widget class="QWidget" name="aboutTab">
       <attribute name="title">
-       <string>About</string>
+       <string>Overview</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <item>
@@ -113,7 +113,7 @@
           <bool>true</bool>
          </property>
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;A custom launcher that makes managing Minecraft easier by allowing you to have multiple instances of Minecraft at once.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;MCRith keeps your Minecraft worlds, modpacks, and game versions organized in one place. Create separate instances, manage mods, and launch the setup you want without mixing files.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
