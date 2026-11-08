@@ -77,6 +77,16 @@ AboutDialog::AboutDialog(QWidget* parent) : QDialog(parent), ui(new Ui::AboutDia
 {
     ui->setupUi(this);
 
+    // Match the launcher's rounded controls and preserve the selected theme palette.
+    setStyleSheet(QStringLiteral(
+        "QPushButton { padding: 7px 14px; border: 1px solid palette(mid); border-radius: 9px; }"
+        "QPushButton:hover { background-color: palette(midlight); }"
+        "QPushButton:pressed { background-color: palette(mid); }"
+        "QTextBrowser, QTextEdit { border: 1px solid palette(mid); border-radius: 9px; padding: 7px; }"
+        "QTabWidget::pane { border: 1px solid palette(mid); border-radius: 10px; padding: 4px; }"
+        "QTabBar::tab { padding: 7px 14px; margin: 2px; border: 1px solid transparent; border-radius: 8px; }"
+        "QTabBar::tab:selected { background-color: palette(midlight); border-color: palette(mid); }"));
+
     QString launcherName = BuildConfig.LAUNCHER_DISPLAYNAME;
 
     setWindowTitle(tr("About %1").arg(launcherName));
