@@ -157,7 +157,7 @@ void openMCRithReleases()
             QDir(qEnvironmentVariable("LOCALAPPDATA")).filePath("Google/Chrome/Application/chrome.exe")
         };
         for (const auto& candidate : candidates) {
-            if (QFileInfo::isFile(candidate)) {
+            if (QFileInfo(candidate).isFile()) {
                 chrome = candidate;
                 break;
             }
