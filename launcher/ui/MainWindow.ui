@@ -245,10 +245,10 @@
     <iconset theme="news"/>
    </property>
    <property name="text">
-    <string>MCRith News</string>
+    <string>GitHub Releases</string>
    </property>
    <property name="toolTip">
-    <string>Read the latest updates and announcements about %1.</string>
+    <string>Open MCRith GitHub Releases in Chrome.</string>
    </property>
   </action>
   <action name="actionCAT">
