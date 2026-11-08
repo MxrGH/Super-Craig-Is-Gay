@@ -13,6 +13,8 @@ InstallDirRegKey HKCU "Software\@Launcher_CommonName@" "InstallDir"
 RequestExecutionLevel user
 OutFile "../@Launcher_CommonName@-Setup.exe"
 
+Var SetupInstallSucceeded
+
 !define MUI_ICON "../@Launcher_Branding_ICO@"
 
 !define UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\@Launcher_CommonName@"
@@ -460,10 +462,16 @@ Section /o "Shell Association (Open-With dialog)" SHELL_ASSOC
 SectionEnd
 
 
-; Remove the downloaded setup file after a successful installation.
+; Mark successful installs, then remove the setup only after its window closes.
 ; The installed mcrith.exe and all launcher data remain untouched.
 Function .onInstSuccess
-  ExecShell "open" "$SYSDIR\cmd.exe" '/C timeout /t 3 /nobreak > nul & del /f /q "$EXEPATH"'
+  StrCpy $SetupInstallSucceeded 1
+FunctionEnd
+
+Function .onGUIEnd
+  \${If} $SetupInstallSucceeded == 1
+    ExecShell "open" "$SYSDIR\cmd.exe" '/C timeout /t 3 /nobreak > nul & del /f /q "$EXEPATH"'
+  \${EndIf}
 FunctionEnd
 
 ;--------------------------------
