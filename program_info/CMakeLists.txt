@@ -11,7 +11,7 @@ endif()
 set(Launcher_CommonName "MCRith")
 set(Launcher_DisplayName "MCRith")
 set(Launcher_AppID "org.prismlauncher.PrismLauncher")
-set(Launcher_Domain "prismlauncher.org")
+set(Launcher_Domain "github.com/MxrGH/Super-Craig-Is-Gay")
 set(Launcher_Git "https://github.com/MxrGH/Super-Craig-Is-Gay")
 
 set(Launcher_Name "${Launcher_CommonName}" PARENT_SCOPE)
