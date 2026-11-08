@@ -2,19 +2,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="144" height="48" viewBox="0 0 144 48" role="img" aria-labelledby="title">
   <title id="title">MCRith</title>
   <defs>
-    <linearGradient id="crystal" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#62e6d5"/>
-      <stop offset=".52" stop-color="#6488f5"/>
-      <stop offset="1" stop-color="#a56cf4"/>
+    <linearGradient id="mcrithMark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#46e6da"/>
+      <stop offset=".55" stop-color="#588fff"/>
+      <stop offset="1" stop-color="#be67ff"/>
     </linearGradient>
-    <linearGradient id="facet" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#ffffff" stop-opacity=".78"/>
-      <stop offset="1" stop-color="#ffffff" stop-opacity=".12"/>
+    <linearGradient id="mcrithText" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#cbd7ff"/>
     </linearGradient>
   </defs>
-  <rect x="3" y="3" width="42" height="42" rx="12" fill="url(#crystal)"/>
-  <path d="M24 8 37 15.5v15L24 38 11 30.5v-15Z" fill="none" stroke="#fff" stroke-opacity=".9" stroke-width="1.5" stroke-linejoin="round"/>
-  <path d="m24 8 0 15 13-7.5M24 23l-13-7.5M24 23v15" fill="none" stroke="url(#facet)" stroke-width="1.5" stroke-linejoin="round"/>
-  <path d="m24 23 13 7.5M24 23l-13 7.5" fill="none" stroke="#fff" stroke-opacity=".72" stroke-width="1.2"/>
-  <text x="53" y="32" fill="#ffffff" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="25" font-weight="750" letter-spacing="-1.05">MCRith</text>
+  <rect x="2" y="2" width="44" height="44" rx="13" fill="#151f39" stroke="#465a8c" stroke-width="1"/>
+  <path d="M7 29 A17 17 0 0 1 37 12" fill="none" stroke="#be67ff" stroke-width="1.8" stroke-linecap="round"/>
+  <circle cx="36.5" cy="11.5" r="2.6" fill="#be67ff"/>
+  <path d="M10 36V14h5l7 8 7-8h5v22h-6V23l-6 7-6-7v13z" fill="url(#mcrithMark)"/>
+  <path d="M22 7l2.1 2.1L22 11.2 19.9 9.1z" fill="#fff"/>
+  <text x="54" y="32" fill="url(#mcrithText)" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="25" font-weight="760" letter-spacing="-.9">MCRith</text>
 </svg>
