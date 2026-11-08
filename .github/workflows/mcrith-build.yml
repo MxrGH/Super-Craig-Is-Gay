@@ -1,0 +1,24 @@
+name: MCRith Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version label for this build (for example, 1.0.0)
+        required: false
+        type: string
+        default: ""
+
+permissions: {}
+
+jobs:
+  build:
+    name: Build MCRith for all platforms
+    uses: ./.github/workflows/build.yml
+    permissions:
+      contents: read
+      id-token: write
+      packages: write
+    with:
+      build-type: Release
+      version: ${{ inputs.version }}
