@@ -294,9 +294,10 @@ Application::Application(int& argc, char** argv) : QApplication(argc, argv)
         isANSIColorConsole = true;
     }
 
-    setOrganizationName(BuildConfig.LAUNCHER_NAME);
-    setOrganizationDomain(BuildConfig.LAUNCHER_DOMAIN);
-    setApplicationName(BuildConfig.LAUNCHER_NAME);
+    // Keep the original data identity so existing instances and settings survive the MCRith rebrand.
+    setOrganizationName(QStringLiteral("PrismLauncher"));
+    setOrganizationDomain(QStringLiteral("prismlauncher.org"));
+    setApplicationName(QStringLiteral("PrismLauncher"));
     setApplicationDisplayName(QString("%1 %2").arg(BuildConfig.LAUNCHER_DISPLAYNAME, BuildConfig.printableVersionString()));
     setApplicationVersion(BuildConfig.printableVersionString() + "\n" + BuildConfig.GIT_COMMIT);
     setDesktopFileName(BuildConfig.LAUNCHER_APPID);
