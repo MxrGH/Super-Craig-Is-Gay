@@ -149,6 +149,22 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
 {
     ui->setupUi(this);
 
+    // Give MCRith a comfortable, modern starting layout.
+    setMinimumSize(900, 620);
+    resize(1120, 760);
+
+    const QString toolbarStyle = QStringLiteral(
+        "QToolBar { spacing: 6px; padding: 6px; }"
+        "QToolButton { padding: 6px 10px; border-radius: 6px; }"
+        "QToolButton:hover { background-color: palette(midlight); }"
+        "QToolButton:pressed { background-color: palette(mid); }");
+    ui->mainToolBar->setIconSize(QSize(20, 20));
+    ui->instanceToolBar->setIconSize(QSize(20, 20));
+    ui->newsToolBar->setIconSize(QSize(18, 18));
+    ui->mainToolBar->setStyleSheet(toolbarStyle);
+    ui->instanceToolBar->setStyleSheet(toolbarStyle);
+    ui->newsToolBar->setStyleSheet(toolbarStyle);
+
     setWindowIcon(APPLICATION->logo());
     setWindowTitle(APPLICATION->applicationDisplayName());
 #ifndef QT_NO_ACCESSIBILITY
