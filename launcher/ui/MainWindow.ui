@@ -2,12 +2,18 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="minimumSize">
+   <size>
+    <width>900</width>
+    <height>620</height>
+   </size>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1120</width>
+    <height>760</height>
    </rect>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -32,7 +38,7 @@
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QToolBar" name="mainToolBar">
    <property name="windowTitle">
-    <string>Main Toolbar</string>
+    <string>MCRith Toolbar</string>
    </property>
    <property name="allowedAreas">
     <set>Qt::BottomToolBarArea|Qt::TopToolBarArea</set>
@@ -57,11 +63,11 @@
    <addaction name="actionCheckUpdate"/>
    <addaction name="separator"/>
    <addaction name="actionCAT"/>
-   <addaction name="actionAccountsButton"/>
+   <addaction name="actionPlayer AccountButton"/>
   </widget>
   <widget class="QToolBar" name="newsToolBar">
    <property name="windowTitle">
-    <string>News Toolbar</string>
+    <string>MCRith News Toolbar</string>
    </property>
    <property name="allowedAreas">
     <set>Qt::BottomToolBarArea|Qt::TopToolBarArea</set>
@@ -203,7 +209,7 @@
    </widget>
    <widget class="QMenu" name="accountsMenu">
     <property name="title">
-     <string>&amp;Accounts</string>
+     <string>&amp;Player Account</string>
     </property>
    </widget>
    <widget class="QMenu" name="helpMenu">
@@ -239,10 +245,10 @@
     <iconset theme="news"/>
    </property>
    <property name="text">
-    <string>More News...</string>
+    <string>MCRith News</string>
    </property>
    <property name="toolTip">
-    <string>Open the development blog to read more news about %1.</string>
+    <string>Read the latest updates and announcements about %1.</string>
    </property>
   </action>
   <action name="actionCAT">
@@ -288,10 +294,10 @@
     <iconset theme="new"/>
    </property>
    <property name="text">
-    <string>Add Instanc&amp;e...</string>
+    <string>Add Instance…</string>
    </property>
    <property name="toolTip">
-    <string>Add a new instance.</string>
+    <string>Create a new Minecraft instance.</string>
    </property>
   </action>
   <action name="actionCheckUpdate">
@@ -322,12 +328,12 @@
     <enum>QAction::PreferencesRole</enum>
    </property>
   </action>
-  <action name="actionManageAccounts">
+  <action name="actionManagePlayer Account">
    <property name="icon">
     <iconset theme="accounts"/>
    </property>
    <property name="text">
-    <string>&amp;Manage Accounts...</string>
+    <string>&amp;Manage Player Account...</string>
    </property>
   </action>
   <action name="actionLaunchInstance">
@@ -335,10 +341,10 @@
     <iconset theme="launch"/>
    </property>
    <property name="text">
-    <string>&amp;Launch</string>
+    <string>&amp;Play</string>
    </property>
    <property name="toolTip">
-    <string>Launch the selected instance.</string>
+    <string>Start the selected Minecraft instance.</string>
    </property>
   </action>
   <action name="actionKillInstance">
@@ -457,7 +463,7 @@
     <iconset theme="launcher"/>
    </property>
    <property name="text">
-    <string>Prism Launcher (zip)</string>
+    <string>MCRith Instance Pack (zip)</string>
    </property>
   </action>
   <action name="actionExportInstanceMrPack">
@@ -487,12 +493,12 @@
     <string>Creates a shortcut on a selected folder to launch the selected instance.</string>
    </property>
   </action>
-  <action name="actionNoAccountsAdded">
+  <action name="actionNoPlayer AccountAdded">
    <property name="icon">
     <iconset theme="noaccount"/>
    </property>
    <property name="text">
-    <string>No accounts added!</string>
+    <string>No accounts yet</string>
    </property>
   </action>
   <action name="actionNoDefaultAccount">
@@ -503,7 +509,7 @@
     <iconset theme="noaccount"/>
    </property>
    <property name="text">
-    <string>No Default Account</string>
+    <string>No active account</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+0</string>
@@ -528,10 +534,10 @@
     <iconset theme="viewfolder"/>
    </property>
    <property name="text">
-    <string>&amp;Instances</string>
+    <string>&amp;Game Instances</string>
    </property>
    <property name="toolTip">
-    <string>Open the instances folder in a file browser.</string>
+    <string>Open the folder containing your Minecraft instances.</string>
    </property>
   </action>
   <action name="actionViewLauncherRootFolder">
@@ -539,10 +545,10 @@
     <iconset theme="viewfolder"/>
    </property>
    <property name="text">
-    <string>Launcher &amp;Root</string>
+    <string>MCRith &amp;Data Folder</string>
    </property>
    <property name="toolTip">
-    <string>Open the launcher's root folder in a file browser.</string>
+    <string>Open MCRith's data folder in your file browser.</string>
    </property>
   </action>
   <action name="actionViewCentralModsFolder">
@@ -646,7 +652,7 @@
     <string>&amp;About %1</string>
    </property>
    <property name="toolTip">
-    <string>View information about %1.</string>
+    <string>View information and credits for %1.</string>
    </property>
    <property name="menuRole">
     <enum>QAction::AboutRole</enum>
@@ -705,15 +711,15 @@
     <string>Help</string>
    </property>
    <property name="toolTip">
-    <string>Get help with %1 or Minecraft.</string>
+    <string>Get help with MCRith or Minecraft.</string>
    </property>
   </action>
-  <action name="actionAccountsButton">
+  <action name="actionPlayer AccountButton">
    <property name="icon">
     <iconset theme="noaccount"/>
    </property>
    <property name="text">
-    <string>Accounts</string>
+    <string>Player Account</string>
    </property>
   </action>
   <action name="actionOpenWiki">
