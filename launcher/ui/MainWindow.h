@@ -200,7 +200,6 @@ class MainWindow : public QMainWindow {
 
     void repopulateAccountsMenu();
 
-    void updateNewsLabel();
 
     void konamiTriggered();
 
@@ -245,7 +244,6 @@ class MainWindow : public QMainWindow {
 
     std::shared_ptr<Setting> instanceToolbarSetting = nullptr;
 
-    unique_qobject_ptr<NewsChecker> m_newsChecker;
 
     BaseInstance* m_selectedInstance = nullptr;
     QString m_currentInstIcon;
