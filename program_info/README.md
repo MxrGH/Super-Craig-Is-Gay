@@ -1,7 +1,9 @@
-# Prism Launcher Program Info
+# MCRith Program Info
 
-This is Prism Launcher's program info which contains information about:
+This directory contains MCRith's application metadata and branding resources, including:
 
-- Application name and logo (and branding in general)
-- Various URLs and API endpoints
-- Desktop file
+- Application display name and logo assets
+- Desktop integration metadata
+- Platform-specific application resources
+
+MCRith is based on Prism Launcher. Original contributor credits and licence notices are retained.
