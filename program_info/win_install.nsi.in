@@ -469,9 +469,9 @@ Function .onInstSuccess
 FunctionEnd
 
 Function .onGUIEnd
-  \${If} $SetupInstallSucceeded == 1
+  ${If} $SetupInstallSucceeded == 1
     ExecShell "open" "$SYSDIR\cmd.exe" '/C timeout /t 3 /nobreak > nul & del /f /q "$EXEPATH"'
-  \${EndIf}
+  ${EndIf}
 FunctionEnd
 
 ;--------------------------------
