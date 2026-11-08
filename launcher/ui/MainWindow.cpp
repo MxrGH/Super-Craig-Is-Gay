@@ -66,6 +66,8 @@
 #include <QMenuBar>
 #include <QMessageBox>
 #include <QProgressDialog>
+#include <QProcess>
+#include <QStandardPaths>
 #include <QShortcut>
 #include <QStatusBar>
 #include <QToolBar>
@@ -87,7 +89,6 @@
 #include <minecraft/auth/AccountList.h>
 #include <net/ApiDownload.h>
 #include <net/NetJob.h>
-#include <news/NewsChecker.h>
 #include <tools/BaseProfiler.h>
 #include <updater/ExternalUpdater.h>
 #include "InstanceWindow.h"
@@ -142,6 +143,31 @@ QString profileInUseFilter(const QString& profile, bool used)
     } else {
         return profile;
     }
+}
+
+void openMCRithReleases()
+{
+    const QString url = QStringLiteral("https://github.com/MxrGH/Super-Craig-Is-Gay/releases");
+#ifdef Q_OS_WIN
+    QString chrome = QStandardPaths::findExecutable(QStringLiteral("chrome.exe"));
+    if (chrome.isEmpty()) {
+        const QStringList candidates = {
+            QDir(qEnvironmentVariable("PROGRAMFILES")).filePath("Google/Chrome/Application/chrome.exe"),
+            QDir(qEnvironmentVariable("PROGRAMFILES(X86)")).filePath("Google/Chrome/Application/chrome.exe"),
+            QDir(qEnvironmentVariable("LOCALAPPDATA")).filePath("Google/Chrome/Application/chrome.exe")
+        };
+        for (const auto& candidate : candidates) {
+            if (QFileInfo::isFile(candidate)) {
+                chrome = candidate;
+                break;
+            }
+        }
+    }
+    if (!chrome.isEmpty() && QProcess::startDetached(chrome, { url })) {
+        return;
+    }
+#endif
+    DesktopServices::openUrl(QUrl(url));
 }
 }  // namespace
 
@@ -306,19 +332,17 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
         connect(secretEventFilter, &KonamiCode::triggered, this, &MainWindow::konamiTriggered);
     }
 
-    // Add the news label to the news toolbar.
+    // A local GitHub Releases link replaces the remote RSS feed and avoids startup network work.
     {
-        m_newsChecker.reset(new NewsChecker(APPLICATION->network(), BuildConfig.NEWS_RSS_URL));
         newsLabel = new QToolButton();
         newsLabel->setIcon(QIcon::fromTheme("news"));
+        newsLabel->setText(tr("Think your version is outdated? Click This Button"));
         newsLabel->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
         newsLabel->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
         newsLabel->setFocusPolicy(Qt::NoFocus);
         ui->newsToolBar->insertWidget(ui->actionMoreNews, newsLabel);
 
         connect(newsLabel, &QAbstractButton::clicked, this, &MainWindow::newsButtonClicked);
-        connect(m_newsChecker.get(), &NewsChecker::newsLoaded, this, &MainWindow::updateNewsLabel);
-        updateNewsLabel();
     }
 
     // Create the instance list widget
@@ -438,12 +462,6 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     // TODO: refresh accounts here?
     // auto accounts = APPLICATION->accounts();
-
-    // load the news
-    {
-        m_newsChecker->reloadNews();
-        updateNewsLabel();
-    }
 
     if (APPLICATION->updaterEnabled()) {
         bool updatesAllowed = APPLICATION->updatesAreAllowed();
@@ -831,26 +849,6 @@ bool MainWindow::eventFilter(QObject* obj, QEvent* ev)
         }
     }
     return QMainWindow::eventFilter(obj, ev);
-}
-
-void MainWindow::updateNewsLabel()
-{
-    if (m_newsChecker->isLoadingNews()) {
-        newsLabel->setText(tr("Loading news..."));
-        newsLabel->setEnabled(false);
-        ui->actionMoreNews->setVisible(false);
-    } else {
-        QList<NewsEntryPtr> entries = m_newsChecker->getNewsEntries();
-        if (entries.length() > 0) {
-            newsLabel->setText(entries[0]->title);
-            newsLabel->setEnabled(true);
-            ui->actionMoreNews->setVisible(true);
-        } else {
-            newsLabel->setText(tr("No news available."));
-            newsLabel->setEnabled(false);
-            ui->actionMoreNews->setVisible(false);
-        }
-    }
 }
 
 QList<int> stringToIntList(const QString& string)
@@ -1493,17 +1491,12 @@ void MainWindow::on_actionOpenWiki_triggered()
 
 void MainWindow::on_actionMoreNews_triggered()
 {
-    auto entries = m_newsChecker->getNewsEntries();
-    NewsDialog news_dialog(entries, this);
-    news_dialog.exec();
+    openMCRithReleases();
 }
 
 void MainWindow::newsButtonClicked()
 {
-    auto entries = m_newsChecker->getNewsEntries();
-    NewsDialog news_dialog(entries, this);
-    news_dialog.toggleArticleList();
-    news_dialog.exec();
+    openMCRithReleases();
 }
 
 void MainWindow::onCatChanged(int)
